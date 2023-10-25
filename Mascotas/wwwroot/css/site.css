@@ -1,0 +1,35 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.control-label {
+    margin-top: 15px; /* Ajusta el valor según la cantidad de espacio que deseas en la parte superior */
+}
+.center-table {
+    text-align: center; /* Centra el contenido de la tabla horizontalmente */
+    vertical-align: middle; /* Centra el contenido de la tabla verticalmente */
+}
+
+.center-cell {
+    text-align: center; /* Centra el contenido de las celdas horizontalmente */
+    vertical-align: middle; /* Centra el contenido de las celdas verticalmente */
+}

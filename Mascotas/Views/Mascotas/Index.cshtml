@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Mascotas.Models.Mascota>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+
+    <div class="col-md-12"> @* offset-md-1">*@
+        <h1>Mascotas</h1>
+        @*<input id="myInput" type="text" placeholder="Search...">*@
+        <br>
+        <div class="input-group">
+            <div class="form-outline">
+                <input type="search" id="myInput" class="form-control" placeholder="Buscar..." />
+            </div>
+            <button type="button" class="btn btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="center-cell">
+                        @Html.DisplayName("Foto")
+                    </th>
+                    <th class="center-cell">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th class="center-cell">
+                        @Html.DisplayNameFor(model => model.Age)
+                    </th>
+                    <th class="center-cell">
+                        @Html.DisplayNameFor(model => model.Color)
+                    </th>
+                    <th class="center-cell">
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th class="center-cell">
+                        @Html.DisplayNameFor(model => model.OwnerName)
+                    </th>
+                    <th class="center-cell">
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th class="center-cell" style="width: 100px;">
+                        <a asp-action="AddOrEdit" class="btn btn-sm btn-success" style="width:92px !important">
+                            <i class="fa-solid fa-plus"></i>
+                            Nuevo
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="myTable" class="center-table">
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td class="center-cell">
+                        <img src="@("~/image/"+item.ImageName)" asp-append-version="true" width="50px" height="50px" />
+                    </td>
+                    <td class="center-cell">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="center-cell">
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td class="center-cell">
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td class="center-cell">
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td class="center-cell">
+                        @Html.DisplayFor(modelItem => item.OwnerName)
+                    </td>
+                    <td class="center-cell">
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td class="center-cell">
+
+                        <form asp-action="Delete" asp-route-id="@item.Id">
+                            <div class="btn-group btn-group-sm">
+                                <a asp-action="AddOrEdit" asp-route-id="@item.Id" class="btn btn-warning">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                &nbsp;
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                &nbsp;
+                                <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Are you sure? ,you want to delete the selected record')">
+                                    <i class="far fa-trash-alt"> </i>
+                                </button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
